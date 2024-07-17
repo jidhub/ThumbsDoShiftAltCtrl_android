@@ -1,60 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:ask="http://schemas.android.com/apk/res-auto"
-          android:keyWidth="10%p"
-      >
-    <!-- "android:keyWidth" specify the default width of a key. In this example, 10% of parent (the whole keyboard) -->
-    
-    <Row>
+    xmlns:ask="http://schemas.android.com/apk/res-auto"
+    android:keyWidth="10%p"
+    android:keyHeight="@integer/key_normal_height">
         <!-- Key attributes:
-         "android:codes" : a comma separated unicode values of the keys. If you specify more than one code, then the other codes are accessible via multi-tap.
+	        api/src/main/res/values/functional_key_codes.xml
+	source: api/src/main/res/values/keyboard_layout_api.xml
+	default icons: ime/app/src/main/java/com/anysoftkeyboard/keyboards/views/AnyKeyboardViewBase.java
+	api/src/main/java/com/anysoftkeyboard/api/KeyCodes.java
+         "android:codes" : ask:shiftedKeyOutputText="3" plus lisible que ask:shiftedCodes="\u0033" et faut éviter ask:shiftedCodes="3" envoie ^C et n'affiche que avec shift mais pas caps, shiftedKeyOutputText et shiftedKeyOutputTyping fonctionnent, shiftedKeyLabel ne change pas ce qui est tapé mais modifie la touche.  a comma separated unicode values of the keys. If you specify more than one code, then the other codes are accessible via multi-tap.  ./api/src/main/res/values/functional_key_codes.xml
          "android:popupCharacters" : characters to show on long-press popup keyboard
-         "android:keyLabel" : the text to show on the key. If this attribute is missing, the first code in "android:codes" will be used.
+         "android:keyLabel" : the text to show on the key. More powerful that android:codes for shifted and AltGr appearances. necessary if android:isRepeatable="true"
          "android:horizontalGap" : gap to add to the left of this key.
          "android:isModifier" : true/false (default is false) whether this key is a modifier key. Means it will be rendered with a differnt background (shift, delete are example of modifier key)
+  ask:hintLabel="8": what is hintLabel  : change rien, snif.
          "android:isRepeatable" : true/false (default is false) whether this key repeats printing on long press (like the backspace). Setting this to true will disable the long-press (android:popupCharacters) functionality
-         "android:keyWidth" : specify the width of this key
+	list of icons on:
+     "android:keyWidth" specify the default width of a key. In this example, 10% of parent (the whole keyboard)
          -->
-        <Key android:codes="97" android:keyLabel="a" android:popupCharacters="1àáâãäåæąā¹₁" ask:hintLabel="1" android:keyEdgeFlags="left"/>
-        <Key android:codes="122" android:keyLabel="z" android:popupCharacters="2żžź²₂" ask:hintLabel="2"/>
-        <Key android:codes="101" android:keyLabel="e" android:popupCharacters="3èé€êëęē³₃" ask:hintLabel="3"/>
-        <Key android:codes="114" android:keyLabel="r" android:popupCharacters="4⁴₄řŕ" ask:hintLabel="4"/>
-        <Key android:codes="116" android:keyLabel="t" android:popupCharacters="5" ask:hintLabel="5"/>
-        <Key android:codes="121" android:keyLabel="y" android:popupCharacters="6ýÿ" ask:hintLabel="6"/>
-        <Key android:codes="117" android:keyLabel="u" android:popupCharacters="7ùúûüŭűū" ask:hintLabel="7"/>
-        <Key android:codes="105" android:keyLabel="i" android:popupCharacters="8ìíîïłī" ask:hintLabel="8"/>
-        <Key android:codes="111" android:keyLabel="o" android:popupCharacters="9òóôõöøőœō" ask:hintLabel="9"/>
-        <Key android:codes="112" android:keyLabel="p" android:popupCharacters="0¶" ask:hintLabel="0" android:keyEdgeFlags="right"/>
+    <Row android:rowEdgeFlags="top">
+        <Key android:codes="233" android:keyLabel="é²" ask:shiftedKeyOutputText="2" ask:AltGredCodes="\u007e" ask:shiftAltGredCodes=">" android:isRepeatable="true"/>
+        <Key android:codes="\u0022" android:keyLabel="\u0022³" ask:shiftedKeyOutputText="3" ask:AltGredCodes="\u0023" ask:AltGredKeyLabel="\u0023" ask:shiftAltGredCodes="\u003c" android:isRepeatable="true"/>
+	<Key android:codes="\u0027" android:keyLabel="\u0027⁴" ask:shiftedKeyOutputText="4" ask:AltGredCodes="{" ask:shiftAltGredCodes="$" android:isRepeatable="true"/>
+        <Key android:codes="(" android:keyLabel="(⁵" ask:shiftedKeyOutputText="5" ask:AltGredCodes="[" ask:shiftAltGredCodes="%" android:isRepeatable="true"/>
+        <Key android:codes="-" android:keyLabel="-⁶" ask:shiftedKeyOutputText="6" ask:AltGredCodes="|" ask:shiftAltGredCodes="^" android:isRepeatable="true"/>
+        <Key android:codes="è" android:keyLabel="è⁷" ask:shiftedKeyOutputText="7" ask:AltGredCodes="`" ask:shiftAltGredCodes="&" android:isRepeatable="true"/>
+        <Key android:codes="_" android:keyLabel="_⁸" ask:shiftedKeyOutputText="8" ask:AltGredCodes="\u005c" ask:shiftAltGredCodes="*" android:isRepeatable="true"/>
+        <Key android:codes="ç" android:keyLabel="ç⁹" ask:shiftedKeyOutputText="9" ask:AltGredCodes="^" ask:shiftAltGredCodes="±" ask:shiftAltGredKeyLabel="±" android:isRepeatable="true"/>
+        <Key android:codes="à" android:keyLabel="à⁰" ask:shiftedKeyOutputText="0" ask:AltGredCodes="@" ask:AltGredKeyLabel="@" ask:shiftAltGredCodes="°" android:isRepeatable="true"/>
+	<Key android:codes=")" android:keyLabel=")" ask:shiftedCodes="°" ask:AltGredCodes="]" ask:shiftAltGredCodes="}" android:keyEdgeFlags="right" android:isRepeatable="true"/>
     </Row>
-     
     <Row>
-        <Key android:codes="113" android:keyLabel="q" android:popupCharacters="@" ask:hintLabel="@" android:keyEdgeFlags="left"/>
-        <Key android:codes="115" android:keyLabel="s" android:popupCharacters="$§ßśŝš" ask:hintLabel="$"/>
-        <Key android:codes="100" android:keyLabel="d" android:popupCharacters="#%đď" ask:hintLabel="# %"/>
-        <Key android:codes="102" android:keyLabel="f" android:popupCharacters="^\u0026" ask:hintLabel="^ \u0026"/>
-        <Key android:codes="103" android:keyLabel="g" android:popupCharacters="`°ĝ" ask:hintLabel="` °"/>
-        <Key android:codes="104" android:keyLabel="h" android:popupCharacters="-~ĥ" ask:hintLabel="- ~"/>
-        <Key android:codes="106" android:keyLabel="j" android:popupCharacters="\\|ĵ" ask:hintLabel="\\ |"/>
-        <Key android:codes="107" android:keyLabel="k" android:popupCharacters="([{" ask:hintLabel="("/>
-        <Key android:codes="108" android:keyLabel="l" android:popupCharacters=")]}ľĺł£" ask:hintLabel=")"/>
-        <Key android:codes="109" android:keyLabel="m"  android:popupCharacters="&gt;»µ" ask:hintLabel="&gt;"
-             android:keyEdgeFlags="right"/>
+        <Key android:codes="a" android:keyLabel="a" ask:AltGredCodes="â" ask:shiftAltGredCodes="Â" android:isRepeatable="true" android:popupCharacters="" android:keyEdgeFlags="left"/>
+        <Key android:codes="z" android:keyLabel="z" ask:AltGredCodes="\u0026" ask:shiftAltGredCodes="\u0031" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="e" android:keyLabel="e" ask:AltGredCodes="ê" ask:shiftAltGredCodes="" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="r" android:keyLabel="r" ask:AltGredCodes="-" ask:shiftAltGredCodes="\u0036" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="t" android:keyLabel="t" ask:AltGredCodes="y" ask:shiftAltGredCodes="Y" android:isRepeatable="true" android:popupCharacters=""/>
+	<Key android:codes="y" android:keyLabel="y" ask:AltGredCodes="è" ask:shiftAltGredCodes="È" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="u" android:keyLabel="u" ask:AltGredCodes="û" ask:shiftAltGredCodes="Û" android:isRepeatable="true" android:popupCharacters=""/>
+	<Key android:codes="i" android:keyLabel="i" ask:AltGredCodes="î" ask:shiftAltGredCodes="Î" android:isRepeatable="true" android:popupCharacters=""/>
+	<Key android:codes="o" android:keyLabel="o" ask:AltGredCodes="ô" ask:shiftAltGredCodes="Ô" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="p" android:keyLabel="p" ask:AltGredCodes="=" ask:shiftAltGredCodes="+" android:keyEdgeFlags="right" android:isRepeatable="true" android:popupCharacters=""/>
     </Row>
-    
     <Row>
-    <!-- android:codes="-1" =  SHIFT key -->
-        <Key android:codes="-1" android:keyWidth="15%p" android:isModifier="true" android:isSticky="true" android:keyEdgeFlags="left"/>
-        <Key android:codes="119" android:keyLabel="w" android:popupCharacters="/÷ŵ" ask:hintLabel="/"/>
-        <Key android:codes="120" android:keyLabel="x" android:popupCharacters="*·×" ask:hintLabel="*"/>
-        <Key android:codes="99" android:keyLabel="c" android:popupCharacters="_—çćĉč" ask:hintLabel="_"/>
-        <Key android:codes="118" android:keyLabel="v" android:popupCharacters="+±\u0026" ask:hintLabel="+"/>
-        <Key android:codes="98" android:keyLabel="b" android:popupCharacters="\u003D"/>
-        <Key android:codes="110" android:keyLabel="n" android:popupCharacters="&lt;ñńň" ask:hintLabel="&lt;"/>
-    <!-- add 1 little key for apostrophe -->
-    <Key ask:isFunctional="true" android:codes="\u0027" android:popupCharacters="\u0022«"/>
-    <!-- android:codes="-5" =  BACKSPACE key -->
-        <Key android:keyWidth="15%p" android:codes="-5" android:keyEdgeFlags="right" android:isRepeatable="true"/>
+        <Key android:codes="113" android:keyLabel="q" ask:AltGredCodes="@integer/key_code_esc" ask:shiftAltGredCodes="@integer/key_code_esc" ask:AltGredKeyLabel="␛" ask:shiftAltGredKeyLabel="␛" android:keyEdgeFlags="left" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="115" android:keyLabel="s" ask:AltGredCodes="-5" ask:AltGredKeyLabel="⌫" ask:shiftAltGredKeyLabel="⌫" ask:shiftAltGredCodes="-5" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="100" android:keyLabel="d" ask:AltGredCodes="|" ask:shiftAltGredCodes="€" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="102" android:keyLabel="f" ask:AltGredCodes="è" ask:shiftAltGredCodes="\u0037" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="103" android:keyLabel="g" ask:AltGredCodes="ù" ask:shiftAltGredCodes="Ù" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="104" android:keyLabel="h" ask:AltGredCodes="@integer/key_code_arrow_left" ask:AltGredKeyLabel="←" ask:shiftAltGredCodes="@integer/key_code_arrow_left" ask:shiftAltGredKeyLabel="←" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="106" android:keyLabel="j" ask:AltGredCodes="@integer/key_code_arrow_down" ask:AltGredKeyLabel="↓" ask:shiftAltGredCodes="@integer/key_code_arrow_down" ask:shiftAltGredKeyLabel="↓" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="107" android:keyLabel="k" ask:AltGredCodes="@integer/key_code_arrow_up" ask:shiftAltGredCodes="@integer/key_code_arrow_up" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="108" android:keyLabel="l" ask:AltGredCodes="@integer/key_code_arrow_right" ask:shiftAltGredCodes="@integer/key_code_arrow_right" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="109" android:keyLabel="m" ask:AltGredCodes="10" ask:AltGredKeyLabel="⏎" ask:shiftAltGredKeyLabel="⏎" android:keyEdgeFlags="right" android:isRepeatable="true" android:popupCharacters=""/>
+    </Row>
+
+    <Row>
+        <Key android:codes="119" android:keyLabel="w" ask:AltGredKeyOutputTyping="\u0026" ask:AltGredKeyLabel="\u0026" ask:shiftAltGredCodes="\u0031" android:isRepeatable="true" android:keyEdgeFlags="left" android:popupCharacters=""/>
+	<Key android:codes="120" android:keyLabel="x" ask:AltGredCodes="@integer/key_code_clipboard_cut" ask:shiftAltGredCodes="@integer/key_code_passwordstore_popup" ask:shiftAltGredKeyLabel="🔑" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="99" android:keyLabel="c" ask:AltGredCodes="@integer/key_code_clipboard_copy" ask:shiftAltGredCodes="\u0037" ask:AltGredKeyLabel="⎘" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="118" android:keyLabel="v" ask:AltGredCodes="@integer/key_code_clipboard_paste" ask:shiftAltGredCodes="@integer/key_code_clipboard_paste_popup" ask:AltGredKeyLabel="📋" ask:shiftAltGredKeyLabel="📋📋" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="98" android:keyLabel="b" ask:AltGredCodes="b" ask:shiftAltGredCodes="B" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="110" android:keyLabel="n" ask:AltGredCodes="b" ask:shiftAltGredCodes="B" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key android:codes="44" ask:shiftedKeyOutputText="?" android:keyLabel=",?" android:isRepeatable="true"/>
+    <Key android:codes=";" android:keyLabel=";." ask:shiftedKeyOutputText="." ask:AltGredKeyOutputTyping=":" ask:AltGredKeyLabel=":" ask:shiftAltGredKeyOutputText="/" ask:shiftAltGredKeyOutputTyping="/" ask:shiftAltGredKeyLabel="/" android:isRepeatable="true"/>
+    <Key android:codes=":" android:keyLabel=":/" ask:shiftedKeyOutputText="/" ask:AltGredKeyOutputTyping=":" ask:AltGredKeyLabel=":" ask:shiftAltGredKeyOutputText="/" ask:shiftAltGredKeyOutputTyping="/" ask:shiftAltGredKeyLabel="/" android:isRepeatable="true"/>
+    <Key android:codes="!" android:keyLabel="!§" ask:shiftedKeyOutputText="§" android:keyEdgeFlags="right" android:isRepeatable="true"/>
+    </Row>
+    <!-- from addons/languages/english/pack/src/main/res/xml/halmak.xml but without ask:longPressCode="-100" -->
+    <Row android:rowEdgeFlags="bottom" android:keyboardMode="@integer/keyboard_mode_normal">
+        <Key android:keyWidth="8%p" android:codes="-5" android:isRepeatable="true" android:popupCharacters="" android:keyEdgeFlags="left"/>
+	<Key android:codes="@integer/key_code_cancel" android:keyWidth="15%p" ask:shiftedCodes="@integer/key_code_utility_keyboard" ask:shiftedKeyLabel="Menu" ask:shiftAltGredCodes="@integer/key_code_voice_input"   ask:AltGredCodes="-120" android:isRepeatable="false"/>
+        <Key android:codes="27" android:keyLabel="Alt" ask:AltGredKeyLabel="Alt" android:isRepeatable="false" android:popupCharacters=""/>
+        <Key
+            android:codes="-1" android:keyLabel="⇧" ask:shiftedKeyLabel="⇧" ask:AltGredKeyLabel="⇧" ask:shiftAltGredKeyLabel="⇧" 
+            android:isModifier="true" android:isRepeatable="false"
+            android:isSticky="false"/>
+        <Key
+            android:codes="32"
+            android:isRepeatable="true"
+            android:keyWidth="20%p"/>
+        <Key
+            android:codes="-93"
+            android:isModifier="true" android:keyLabel="⎇" ask:shiftedKeyLabel="⎇" android:isRepeatable="false" ask:AltGredKeyLabel="⎇" ask:shiftAltGredKeyLabel="⎇"
+            android:keyWidth="10%p"/>
+	<!-- fails in previous key: android:isRepeatable="true" -->
+	<Key android:codes="@integer/key_code_ctrl" android:keyWidth="9%p" android:isModifier="true" android:isRepeatable="false"
+		android:popupCharacters=""/>
+        <Key android:codes="\u0026" android:keyLabel="\u0026¹" ask:shiftedCodes="\u0031" ask:AltGredCodes="€" ask:shiftAltGredCodes="\u0031" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key
+            android:codes="10" android:keyEdgeFlags="right"
+            android:keyWidth="8%p"/>
+    </Row>
+    <Row android:rowEdgeFlags="bottom" android:keyboardMode="@integer/keyboard_mode_im">
+        <Key android:keyWidth="8%p" android:codes="-5" android:isRepeatable="true" android:popupCharacters="" android:keyEdgeFlags="left"/>
+	<Key android:codes="@integer/key_code_cancel" android:keyWidth="9%p" ask:shiftedCodes="@integer/key_code_utility_keyboard" ask:shiftedKeyLabel="Menu" ask:shiftAltGredCodes="@integer/key_code_voice_input"   ask:AltGredCodes="-120" android:isRepeatable="false"/>
+        <Key
+            android:codes="-9" android:keyWidth="8%p"/>
+        <Key android:codes="27" android:keyLabel="Alt" android:keyWidth="8%p" ask:AltGredKeyLabel="Alt" android:isRepeatable="false" android:popupCharacters=""/>
+        <Key
+            android:codes="-1" android:keyLabel="⇧" ask:shiftedKeyLabel="⇧" ask:AltGredKeyLabel="⇧" ask:shiftAltGredKeyLabel="⇧" 
+            android:isModifier="true" android:isRepeatable="false"
+            android:isSticky="false"/>
+        <Key
+            android:codes="32"
+            android:isRepeatable="true"
+            android:keyWidth="20%p"/>
+        <Key
+            android:codes="-93"
+            android:isModifier="true" android:keyLabel="⎇" ask:shiftedKeyLabel="⎇" android:isRepeatable="false" ask:AltGredKeyLabel="⎇" ask:shiftAltGredKeyLabel="⎇"
+            android:keyWidth="10%p"/>
+	<!-- fails in previous key: android:isRepeatable="true" -->
+	<Key android:codes="@integer/key_code_ctrl" android:keyWidth="9%p" android:isModifier="true" android:isRepeatable="false"
+		android:popupCharacters=""/>
+        <Key android:codes="\u0026" android:keyLabel="\u0026¹" ask:shiftedCodes="\u0031" ask:AltGredCodes="€" ask:shiftAltGredCodes="\u0031" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key
+            android:codes="10" android:keyEdgeFlags="right"
+            android:keyWidth="8%p"/>
+    </Row>
+    <Row android:rowEdgeFlags="bottom" android:keyboardMode="@integer/keyboard_mode_password">
+        <Key android:keyWidth="8%p" android:codes="-5" android:isRepeatable="true" android:popupCharacters="" android:keyEdgeFlags="left"/>
+	<Key android:codes="@integer/key_code_cancel" android:keyWidth="9%p" ask:shiftedCodes="@integer/key_code_utility_keyboard" ask:shiftedKeyLabel="Menu" ask:shiftAltGredCodes="@integer/key_code_voice_input"   ask:AltGredCodes="-120" android:isRepeatable="false"/>
+        <Key
+            android:codes="-9" android:keyWidth="8%p"/>
+        <Key android:codes="27" android:keyLabel="Alt" android:keyWidth="8%p" ask:AltGredKeyLabel="Alt" android:isRepeatable="false" android:popupCharacters=""/>
+        <Key
+            android:codes="-1" android:keyLabel="⇧" ask:shiftedKeyLabel="⇧" ask:AltGredKeyLabel="⇧" ask:shiftAltGredKeyLabel="⇧" 
+            android:isModifier="true" android:isRepeatable="false"
+            android:isSticky="false"/>
+        <Key
+            android:codes="32"
+            android:isRepeatable="true"
+            android:keyWidth="20%p"/>
+        <Key
+            android:codes="-93"
+            android:isModifier="true" android:keyLabel="⎇" ask:shiftedKeyLabel="⎇" android:isRepeatable="false" ask:AltGredKeyLabel="⎇" ask:shiftAltGredKeyLabel="⎇"
+            android:keyWidth="10%p"/>
+	<!-- fails in previous key: android:isRepeatable="true" -->
+	<Key android:codes="@integer/key_code_ctrl" android:keyWidth="9%p" android:isModifier="true" android:isRepeatable="false"
+		android:popupCharacters=""/>
+        <Key android:codes="\u0026" android:keyLabel="\u0026¹" ask:shiftedCodes="\u0031" ask:AltGredCodes="€" ask:shiftAltGredCodes="\u0031" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key
+            android:codes="10" android:keyEdgeFlags="right"
+            android:keyWidth="8%p"/>
+    </Row>
+    <Row android:rowEdgeFlags="bottom" android:keyboardMode="@integer/keyboard_mode_email">
+        <Key android:keyWidth="8%p" android:codes="-5" android:isRepeatable="true" android:popupCharacters="" android:keyEdgeFlags="left"/>
+	<Key android:codes="@integer/key_code_cancel" android:keyWidth="9%p" ask:shiftedCodes="@integer/key_code_utility_keyboard" ask:shiftedKeyLabel="Menu" ask:shiftAltGredCodes="@integer/key_code_voice_input"   ask:AltGredCodes="-120" android:isRepeatable="false"/>
+        <Key
+            android:codes="64" android:keyLabel="\@" android:keyWidth="8%p"/>
+        <Key android:codes="27" android:keyLabel="Alt" android:keyWidth="8%p" ask:AltGredKeyLabel="Alt" android:isRepeatable="false" android:popupCharacters=""/>
+        <Key
+            android:codes="-1" android:keyLabel="⇧" ask:shiftedKeyLabel="⇧" ask:AltGredKeyLabel="⇧" ask:shiftAltGredKeyLabel="⇧" 
+            android:isModifier="true" android:isRepeatable="false"
+            android:isSticky="false"/>
+        <Key
+            android:codes="32"
+            android:isRepeatable="true"
+            android:keyWidth="20%p"/>
+        <Key
+            android:codes="-93"
+            android:isModifier="true" android:keyLabel="⎇" ask:shiftedKeyLabel="⎇" android:isRepeatable="false" ask:AltGredKeyLabel="⎇" ask:shiftAltGredKeyLabel="⎇"
+            android:keyWidth="10%p"/>
+	<!-- fails in previous key: android:isRepeatable="true" -->
+	<Key android:codes="@integer/key_code_ctrl" android:keyWidth="9%p" android:isModifier="true" android:isRepeatable="false"
+		android:popupCharacters=""/>
+        <Key android:codes="\u0026" android:keyLabel="\u0026¹" ask:shiftedCodes="\u0031" ask:AltGredCodes="€" ask:shiftAltGredCodes="\u0031" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key
+            android:codes="10" android:keyEdgeFlags="right"
+            android:keyWidth="8%p"/>
+    </Row>
+    <Row android:rowEdgeFlags="bottom" android:keyboardMode="@integer/keyboard_mode_url">
+        <Key android:keyWidth="8%p" android:codes="-5" android:isRepeatable="true" android:popupCharacters="" android:keyEdgeFlags="left"/>
+	<Key android:codes="@integer/key_code_cancel" android:keyWidth="9%p" ask:shiftedCodes="@integer/key_code_utility_keyboard" ask:shiftedKeyLabel="Menu" ask:shiftAltGredCodes="@integer/key_code_voice_input"   ask:AltGredCodes="-120" android:isRepeatable="false"/>
+        <Key
+            android:codes="-9" android:keyWidth="8%p"/>
+        <Key android:codes="27" android:keyLabel="Alt" android:keyWidth="8%p" ask:AltGredKeyLabel="Alt" android:isRepeatable="false" android:popupCharacters=""/>
+        <Key
+            android:codes="-1" android:keyLabel="⇧" ask:shiftedKeyLabel="⇧" ask:AltGredKeyLabel="⇧" ask:shiftAltGredKeyLabel="⇧" 
+            android:isModifier="true" android:isRepeatable="false"
+            android:isSticky="false"/>
+        <Key
+            android:codes="32"
+            android:isRepeatable="true"
+            android:keyWidth="20%p"/>
+        <Key
+            android:codes="-93"
+            android:isModifier="true" android:keyLabel="⎇" ask:shiftedKeyLabel="⎇" android:isRepeatable="false" ask:AltGredKeyLabel="⎇" ask:shiftAltGredKeyLabel="⎇"
+            android:keyWidth="10%p"/>
+	<!-- fails in previous key: android:isRepeatable="true" -->
+	<Key android:codes="@integer/key_code_ctrl" android:keyWidth="9%p" android:isModifier="true" android:isRepeatable="false"
+		android:popupCharacters=""/>
+        <Key android:codes="\u0026" android:keyLabel="\u0026¹" ask:shiftedCodes="\u0031" ask:AltGredCodes="€" ask:shiftAltGredCodes="\u0031" android:isRepeatable="true" android:popupCharacters=""/>
+        <Key
+            android:codes="10" android:keyEdgeFlags="right"
+            android:keyWidth="8%p"/>
     </Row>
 </Keyboard>
-    
